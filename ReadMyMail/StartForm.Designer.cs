@@ -108,7 +108,6 @@
             this.tileGroupElement1.Name = "tileGroupElement1";
             this.tileGroupElement1.RowsCount = 2;
             this.tileGroupElement1.Text = "Email";
-            this.tileGroupElement1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // outlookLiveTile
             // 
@@ -125,7 +124,6 @@
             this.outlookLiveTile.Shape = null;
             this.outlookLiveTile.Text = "";
             this.outlookLiveTile.TransitionType = Telerik.WinControls.UI.ContentTransitionType.SlideRight;
-            this.outlookLiveTile.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             this.outlookLiveTile.Click += new System.EventHandler(this.outlookLiveTile_Click);
             // 
             // liveTileFrameElement1
@@ -137,7 +135,6 @@
             this.liveTileFrameElement1.Name = "liveTileFrameElement1";
             this.liveTileFrameElement1.Text = "Hotmail";
             this.liveTileFrameElement1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.liveTileFrameElement1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // liveTileFrameElement2
             // 
@@ -147,7 +144,6 @@
             this.liveTileFrameElement2.Name = "liveTileFrameElement2";
             this.liveTileFrameElement2.Text = "Outlook";
             this.liveTileFrameElement2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.liveTileFrameElement2.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // liveTileFrameElement3
             // 
@@ -158,7 +154,6 @@
             this.liveTileFrameElement3.Name = "liveTileFrameElement3";
             this.liveTileFrameElement3.Text = "MSN";
             this.liveTileFrameElement3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.liveTileFrameElement3.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // googleLiveTile
             // 
@@ -178,7 +173,6 @@
             this.googleLiveTile.Row = 1;
             this.googleLiveTile.Text = "";
             this.googleLiveTile.TransitionType = Telerik.WinControls.UI.ContentTransitionType.SlideUp;
-            this.googleLiveTile.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             this.googleLiveTile.Click += new System.EventHandler(this.googleLiveTile_Click);
             // 
             // liveTileFrameElement6
@@ -196,7 +190,6 @@
             this.liveTileFrameElement6.Name = "liveTileFrameElement6";
             this.liveTileFrameElement6.Text = "Google";
             this.liveTileFrameElement6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.liveTileFrameElement6.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // liveTileFrameElement7
             // 
@@ -207,7 +200,6 @@
             this.liveTileFrameElement7.Name = "liveTileFrameElement7";
             this.liveTileFrameElement7.Text = "Gmail";
             this.liveTileFrameElement7.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.liveTileFrameElement7.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // tileGroupElement2
             // 
@@ -220,7 +212,6 @@
             this.credentialsLiveTile});
             this.tileGroupElement2.Name = "tileGroupElement2";
             this.tileGroupElement2.Text = "Credentials";
-            this.tileGroupElement2.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // credentialsLiveTile
             // 
@@ -235,7 +226,6 @@
             this.credentialsLiveTile.Name = "credentialsLiveTile";
             this.credentialsLiveTile.Text = "";
             this.credentialsLiveTile.TransitionType = Telerik.WinControls.UI.ContentTransitionType.SlideLeft;
-            this.credentialsLiveTile.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             this.credentialsLiveTile.Click += new System.EventHandler(this.credentialsLiveTile_Click);
             // 
             // liveTileFrameElement4
@@ -248,7 +238,6 @@
             this.liveTileFrameElement4.Name = "liveTileFrameElement4";
             this.liveTileFrameElement4.Text = "Email Address";
             this.liveTileFrameElement4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.liveTileFrameElement4.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // liveTileFrameElement5
             // 
@@ -259,7 +248,6 @@
             this.liveTileFrameElement5.Name = "liveTileFrameElement5";
             this.liveTileFrameElement5.Text = "Password";
             this.liveTileFrameElement5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.liveTileFrameElement5.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // tileGroupElement3
             // 
@@ -272,7 +260,6 @@
             this.contactLiveTile});
             this.tileGroupElement3.Name = "tileGroupElement3";
             this.tileGroupElement3.Text = "Contact";
-            this.tileGroupElement3.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // contactLiveTile
             // 
@@ -283,7 +270,6 @@
             this.liveTileFrameElement9});
             this.contactLiveTile.Name = "contactLiveTile";
             this.contactLiveTile.Text = "";
-            this.contactLiveTile.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // liveTileFrameElement8
             // 
@@ -293,7 +279,6 @@
             this.liveTileFrameElement8.Name = "liveTileFrameElement8";
             this.liveTileFrameElement8.Text = "Support";
             this.liveTileFrameElement8.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.liveTileFrameElement8.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // liveTileFrameElement9
             // 
@@ -306,7 +291,6 @@
             this.liveTileFrameElement9.Name = "liveTileFrameElement9";
             this.liveTileFrameElement9.Text = "Donate";
             this.liveTileFrameElement9.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.liveTileFrameElement9.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // signatureLinkLabel
             // 
@@ -355,6 +339,7 @@
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Read My Email";
             this.ThemeName = "ControlDefault";
             this.Load += new System.EventHandler(this.StartForm_Load);

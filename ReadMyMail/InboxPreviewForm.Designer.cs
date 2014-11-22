@@ -129,6 +129,7 @@
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inbox";
             this.ThemeName = "ControlDefault";
             this.Load += new System.EventHandler(this.InboxPreviewForm_Load);

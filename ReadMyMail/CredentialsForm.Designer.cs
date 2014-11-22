@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CredentialsForm));
             this.credentialsPanel = new Telerik.WinControls.UI.RadPanel();
+            this.selectedHostLabel = new Telerik.WinControls.UI.RadLabel();
+            this.loginHostLabel = new Telerik.WinControls.UI.RadLabel();
             this.loginCancelButton = new Telerik.WinControls.UI.RadButton();
             this.loginOkButton = new Telerik.WinControls.UI.RadButton();
             this.loginPasswordTxtBox = new Telerik.WinControls.UI.RadTextBox();
@@ -38,10 +40,10 @@
             this.passwordLabel = new Telerik.WinControls.UI.RadLabel();
             this.emailLabel = new Telerik.WinControls.UI.RadLabel();
             this.loginErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.loginHostLabel = new Telerik.WinControls.UI.RadLabel();
-            this.selectedHostLabel = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.credentialsPanel)).BeginInit();
             this.credentialsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selectedHostLabel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginHostLabel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginCancelButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginOkButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginPasswordTxtBox)).BeginInit();
@@ -49,8 +51,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.passwordLabel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emailLabel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginErrorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loginHostLabel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.selectedHostLabel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,6 +72,24 @@
             this.credentialsPanel.TabIndex = 0;
             this.credentialsPanel.Text = "Login";
             this.credentialsPanel.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // selectedHostLabel
+            // 
+            this.selectedHostLabel.Location = new System.Drawing.Point(74, 97);
+            this.selectedHostLabel.Name = "selectedHostLabel";
+            this.selectedHostLabel.Size = new System.Drawing.Size(119, 18);
+            this.selectedHostLabel.TabIndex = 6;
+            this.selectedHostLabel.Text = "Select A Email Provider";
+            ((Telerik.WinControls.UI.RadLabelElement)(this.selectedHostLabel.GetChildAt(0))).Text = "Select A Email Provider";
+            ((Telerik.WinControls.UI.RadLabelElement)(this.selectedHostLabel.GetChildAt(0))).Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // loginHostLabel
+            // 
+            this.loginHostLabel.Location = new System.Drawing.Point(17, 97);
+            this.loginHostLabel.Name = "loginHostLabel";
+            this.loginHostLabel.Size = new System.Drawing.Size(50, 18);
+            this.loginHostLabel.TabIndex = 1;
+            this.loginHostLabel.Text = "Provider:";
             // 
             // loginCancelButton
             // 
@@ -130,24 +148,6 @@
             // 
             this.loginErrorProvider.ContainerControl = this;
             // 
-            // loginHostLabel
-            // 
-            this.loginHostLabel.Location = new System.Drawing.Point(17, 97);
-            this.loginHostLabel.Name = "loginHostLabel";
-            this.loginHostLabel.Size = new System.Drawing.Size(50, 18);
-            this.loginHostLabel.TabIndex = 1;
-            this.loginHostLabel.Text = "Provider:";
-            // 
-            // selectedHostLabel
-            // 
-            this.selectedHostLabel.Location = new System.Drawing.Point(74, 97);
-            this.selectedHostLabel.Name = "selectedHostLabel";
-            this.selectedHostLabel.Size = new System.Drawing.Size(119, 18);
-            this.selectedHostLabel.TabIndex = 6;
-            this.selectedHostLabel.Text = "Select A Email Provider";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.selectedHostLabel.GetChildAt(0))).Text = "Select A Email Provider";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.selectedHostLabel.GetChildAt(0))).Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
             // CredentialsForm
             // 
             this.AcceptButton = this.loginOkButton;
@@ -163,11 +163,14 @@
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Enter Your Credentials";
             this.ThemeName = "ControlDefault";
             ((System.ComponentModel.ISupportInitialize)(this.credentialsPanel)).EndInit();
             this.credentialsPanel.ResumeLayout(false);
             this.credentialsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.selectedHostLabel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginHostLabel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginCancelButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginOkButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginPasswordTxtBox)).EndInit();
@@ -175,8 +178,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.passwordLabel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emailLabel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginErrorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loginHostLabel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.selectedHostLabel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
