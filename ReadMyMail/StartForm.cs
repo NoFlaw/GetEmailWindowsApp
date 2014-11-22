@@ -67,20 +67,28 @@ namespace ReadMyMail
         public StartForm()
         {
             InitializeComponent();
+            InitializeBackgroundWorker();
             ThemeResolutionService.ApplicationThemeName = windows8Theme1.ThemeName;
+        }
+
+        private void InitializeBackgroundWorker()
+        {
+            MyBackgroundWorker = new BackgroundWorker { WorkerReportsProgress = true, WorkerSupportsCancellation = true };
+
+            MyBackgroundWorker.DoWork += new DoWorkEventHandler(MyBackgroundWorker1_DoWork);
+
+            MyBackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(MyBackgroundWorker1_RunWorkerCompleted);
+
+            MyBackgroundWorker.ProgressChanged += new ProgressChangedEventHandler(MyBackgroundWorker1_ProgressChanged);
+        }
+
+        protected void MyBackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void StartForm_Load(object sender, EventArgs e)
         {
-            MyBackgroundWorker = new BackgroundWorker
-            {
-                WorkerReportsProgress = true,
-                WorkerSupportsCancellation = true
-            };
-
-            MyBackgroundWorker.DoWork += new DoWorkEventHandler(MyBackgroundWorker1_DoWork);
-            MyBackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(MyBackgroundWorker1_RunWorkerCompleted);
-            
             progressBar.Visible = false;
             waitCancelButton.Visible = false;
         }
