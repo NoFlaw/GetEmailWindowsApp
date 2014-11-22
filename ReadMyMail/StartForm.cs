@@ -63,7 +63,7 @@ namespace ReadMyMail
         
         #endregion Constant Variables
 
-        #region Initialization
+        #region StartForm Initialization
         public StartForm()
         {
             InitializeComponent();
@@ -82,11 +82,6 @@ namespace ReadMyMail
             MyBackgroundWorker.ProgressChanged += new ProgressChangedEventHandler(MyBackgroundWorker1_ProgressChanged);
         }
 
-        protected void MyBackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void StartForm_Load(object sender, EventArgs e)
         {
             progressBar.Visible = false;
@@ -94,6 +89,12 @@ namespace ReadMyMail
         }
 
         #endregion
+
+        #region BackgroundWorker Events
+        protected void MyBackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         protected void MyBackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -128,75 +129,29 @@ namespace ReadMyMail
                 progressBar.Text = "Finished!";
                 MessageBox.Show("Elapsed time while loading: " + TimeSpan.TotalSeconds + " seconds");
                 InboxPreviewForm.Show();
+
+                var loginEmailTxtBox = CredentialsForm.Controls.Find("loginEmailTxtBox", true).FirstOrDefault() as RadTextBox;
+                var inboxHostLabel = InboxPreviewForm.Controls.Find("inboxHostLabel", true).FirstOrDefault() as RadLabel ?? new RadLabel() { Name = "inboxHostLabel" };
+                var inboxLoginLabel = InboxPreviewForm.Controls.Find("inboxLoginLabel", true).FirstOrDefault() as RadLabel ?? new RadLabel() { Name = "inboxLoginLabel" };
+
+                //Inbox Form Login Panel
+                inboxLoginLabel.Text = loginEmailTxtBox.Text;
+                inboxLoginLabel.Visible = true;
+                inboxHostLabel.Text = SelectedHostName.Contains("gmail") ? "Google" : "Microsoft";
+
                 var inboxDateLabel = InboxPreviewForm.Controls.Find("inboxDateLabel", true).FirstOrDefault() as RadLabel;
                 inboxDateLabel.Text = DateTime.Now.ToString(CultureInfo.InvariantCulture);
                 inboxDateLabel.Visible = true;
-               
-                //?? new RadLabel() { Name = "inboxDateLabel" };
             }
         }
-    
-        private void credentialsLiveTile_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(SelectedHostName))
-            {
-                MessageBox.Show("You must select a Email Provider by clicking one upon the Start page",
-                "Host Not Chosen",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Stop);
-                return;
-            }             
+        #endregion 
 
-            var credFormSelectedHostLabel = CredentialsForm.Controls.Find("selectedHostLabel", true).FirstOrDefault() as RadLabel
-                                            ??
-                                            new RadLabel()
-                                            {
-                                                Name = "selectedHostLabel"
-                                            };
-
-            
-            credFormSelectedHostLabel.Text = SelectedHostName.Contains("gmail") ? "Google" : "Microsoft";
- 
-            var dialogresult = CredentialsForm.ShowDialog();
-            
-            switch (dialogresult)
-            {
-                case DialogResult.OK:
-                    try
-                    {
-                        if (!MyBackgroundWorker.IsBusy)
-                        {
-                            //Go get Inbox Messages
-                            MyBackgroundWorker.RunWorkerAsync();
-
-                            //LOADING BAR START
-                            ProgressBarStart();
-                            
-                            //Manual start of timer
-                            Begin = DateTime.Now;
-                        }                      
-
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex.Source != null)
-                            throw new Exception("The program has encountered an error please see the Inner Exception", ex);
-                        MessageBox.Show(ex.Message);
-                    }
-                    break;
-
-                case DialogResult.Cancel:
-                    //TODO: Something useful here
-                    break;
-            }
-
-        }
-  
+        #region ProgressBar
         private void ProgressBarStart()
         {
             progressBar.WaitingBarElement.TextElement.TextAlignment = ContentAlignment.MiddleCenter;
             progressBar.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.Dash;
-            
+
             var dash = progressBar.WaitingBarElement.SeparatorElement;
             dash.NumberOfColors = 2;
             dash.BackColor = Color.Orange;
@@ -207,7 +162,7 @@ namespace ReadMyMail
             dash.GradientPercentage = 0.25f;
 
             progressBar.Text = "Loading... Please Wait";
-            
+
             progressBar.StartWaiting();
 
             progressBar.Visible = true;
@@ -224,36 +179,90 @@ namespace ReadMyMail
             progressBar.Text = string.Empty;
             waitCancelButton.Enabled = false;
         }
+#endregion
+
+        #region Tile Click Events
+        private void credentialsLiveTile_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(SelectedHostName))
+            {
+                MessageBox.Show("You must select a Email Provider by clicking one upon the Start page",
+                "Host Not Chosen",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Stop);
+                return;
+            }
+
+            var credFormSelectedHostLabel = CredentialsForm.Controls.Find("selectedHostLabel", true).FirstOrDefault() as RadLabel
+                                            ??
+                                            new RadLabel()
+                                            {
+                                                Name = "selectedHostLabel"
+                                            };
+
+
+            credFormSelectedHostLabel.Text = SelectedHostName.Contains("gmail") ? "Google" : "Microsoft";
+
+            var dialogresult = CredentialsForm.ShowDialog();
+
+            switch (dialogresult)
+            {
+                case DialogResult.OK:
+                    try
+                    {
+                        if (!MyBackgroundWorker.IsBusy)
+                        {
+                            //Go get Inbox Messages (DoWork)
+                            MyBackgroundWorker.RunWorkerAsync();
+
+                            ProgressBarStart();
+
+                            //Manual start of timer
+                            Begin = DateTime.Now;
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex.Source != null)
+                            throw new Exception("The program has encountered an error please see the Inner Exception", ex);
+                        MessageBox.Show(ex.Message);
+                    }
+                    break;
+
+                case DialogResult.Cancel:
+                    //TODO: Something useful here
+                    break;
+            }
+
+        }
+
+        private void outlookLiveTile_Click(object sender, EventArgs e)
+        {
+            SelectedHostName = MsnHostName;
+        }
+
+        private void googleLiveTile_Click(object sender, EventArgs e)
+        {
+            SelectedHostName = GmailHostName;
+        }
+#endregion
 
         private ICollection<MailMessage> BindInboxPreviewForm(BackgroundWorker worker, DoWorkEventArgs e)
         {
             if (worker.CancellationPending)
-            {
                 e.Cancel = true;
-            }
-
-            var hostName = SelectedHostName;
-
+            
             //Credentials Form Controls
             var loginEmailTxtBox = CredentialsForm.Controls.Find("loginEmailTxtBox", true).FirstOrDefault() as RadTextBox;
             var loginPasswordTxtBox = CredentialsForm.Controls.Find("loginPasswordTxtBox", true).FirstOrDefault() as RadTextBox;
 
-            //Inbox Form Controls
-            var inboxDateLabel = InboxPreviewForm.Controls.Find("inboxDateLabel", true).FirstOrDefault() as RadLabel ?? new RadLabel() { Name = "inboxDateLabel" };
-            var inboxHostLabel = InboxPreviewForm.Controls.Find("inboxHostLabel", true).FirstOrDefault() as RadLabel ?? new RadLabel() { Name = "inboxHostLabel" };
-            var inboxLoginLabel = InboxPreviewForm.Controls.Find("inboxLoginLabel", true).FirstOrDefault() as RadLabel ?? new RadLabel() { Name = "inboxLoginLabel" };
             var inboxGridView = InboxPreviewForm.Controls.Find("inboxGridView", true).FirstOrDefault() as RadGridView ?? new RadGridView() { Name = "inboxGridView" };
 
-            if (loginEmailTxtBox == null || loginPasswordTxtBox == null || string.IsNullOrEmpty(hostName))
+            if (loginEmailTxtBox == null || loginPasswordTxtBox == null || string.IsNullOrEmpty(SelectedHostName))
                 throw new Exception("You must enter valid credentials and choose an Email Provider in order to Read Your Mail.");
 
-            //Inbox Form Login Panel
-            inboxLoginLabel.Text = loginEmailTxtBox.Text;
-            inboxHostLabel.Text = hostName.Contains("gmail") ? "Google" : "Microsoft";
-            inboxDateLabel.Text = DateTime.Now.ToString(CultureInfo.InvariantCulture);
-
-
-            using (EmailClient = new ImapClient(hostName, SslPort, loginEmailTxtBox.Text, loginPasswordTxtBox.Text, AuthMethod.Login, true))
+            using (EmailClient = new ImapClient(SelectedHostName, SslPort, loginEmailTxtBox.Text, loginPasswordTxtBox.Text, AuthMethod.Login, true))
             {
                 MessageBox.Show("Successful Connection Establised @ " + DateTime.Now.TimeOfDay);
                 
@@ -276,16 +285,6 @@ namespace ReadMyMail
 
                 return InboxMessages;
             }
-        }
-
-        private void outlookLiveTile_Click(object sender, EventArgs e)
-        {
-            SelectedHostName = MsnHostName;
-        }
-        
-        private void googleLiveTile_Click(object sender, EventArgs e)
-        {
-            SelectedHostName = GmailHostName;
         }
 
         private void signatureLinkLabel_MouseHover(object sender, EventArgs e)
