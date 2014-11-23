@@ -51,14 +51,12 @@
             this.liveTileFrameElement9 = new Telerik.WinControls.UI.LiveTileFrameElement();
             this.signatureLinkLabel = new System.Windows.Forms.LinkLabel();
             this.progressBar = new Telerik.WinControls.UI.RadWaitingBar();
-            this.waitCancelButton = new Telerik.WinControls.UI.RadButton();
             this.progressLabel = new Telerik.WinControls.UI.RadLabel();
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
             this.radPageView1.SuspendLayout();
             this.radPageViewPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPanorama1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.waitCancelButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressLabel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -311,19 +309,10 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(63, 2);
+            this.progressBar.Location = new System.Drawing.Point(54, 31);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(313, 23);
+            this.progressBar.Size = new System.Drawing.Size(352, 21);
             this.progressBar.TabIndex = 0;
-            // 
-            // waitCancelButton
-            // 
-            this.waitCancelButton.Location = new System.Drawing.Point(382, 1);
-            this.waitCancelButton.Name = "waitCancelButton";
-            this.waitCancelButton.Size = new System.Drawing.Size(81, 24);
-            this.waitCancelButton.TabIndex = 2;
-            this.waitCancelButton.Text = "Cancel";
-            this.waitCancelButton.Click += new System.EventHandler(this.waitCancelButton_Click);
             // 
             // progressLabel
             // 
@@ -338,7 +327,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 328);
             this.Controls.Add(this.progressLabel);
-            this.Controls.Add(this.waitCancelButton);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.signatureLinkLabel);
             this.Controls.Add(this.radPageView1);
@@ -359,7 +347,6 @@
             this.radPageViewPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radPanorama1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.waitCancelButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressLabel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
@@ -391,7 +378,6 @@
         private Telerik.WinControls.UI.LiveTileFrameElement liveTileFrameElement9;
         private System.Windows.Forms.LinkLabel signatureLinkLabel;
         private Telerik.WinControls.UI.RadWaitingBar progressBar;
-        private Telerik.WinControls.UI.RadButton waitCancelButton;
         private Telerik.WinControls.UI.RadLabel progressLabel;
     }
 }

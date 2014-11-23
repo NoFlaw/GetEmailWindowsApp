@@ -85,7 +85,6 @@ namespace ReadMyMail
         private void StartForm_Load(object sender, EventArgs e)
         {
             progressBar.Visible = false;
-            waitCancelButton.Visible = false;
             progressLabel.Visible = false;
         }
 
@@ -169,18 +168,13 @@ namespace ReadMyMail
             progressLabel.Visible = true;
             progressBar.Visible = true;
             progressBar.ShowText = true;
-
-            waitCancelButton.Enabled = true;
-            waitCancelButton.Visible = true;
         }
 
         private void ProgressBarStop()
         {
-            //progressBar.Hide();
             progressBar.StopWaiting();
             progressBar.ResetWaiting();
             progressBar.Text = string.Empty;
-            waitCancelButton.Enabled = false;
         }
 #endregion
 
@@ -307,15 +301,6 @@ namespace ReadMyMail
                     signatureLinkLabel.Font = new Font(signatureLinkLabel.Font, FontStyle.Bold);
                     break;
             }
-        }
-
-        private void waitCancelButton_Click(object sender, EventArgs e)
-        {
-            // Cancel the asynchronous operation. 
-            MyBackgroundWorker.CancelAsync();
-
-            // Disable the Cancel button.
-            waitCancelButton.Enabled = false;
         }
     }
 }
