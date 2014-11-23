@@ -94,7 +94,7 @@
             this.radPanorama1.Name = "radPanorama1";
             this.radPanorama1.RowsCount = 2;
             this.radPanorama1.ShowGroups = true;
-            this.radPanorama1.Size = new System.Drawing.Size(511, 246);
+            this.radPanorama1.Size = new System.Drawing.Size(437, 246);
             this.radPanorama1.TabIndex = 0;
             this.radPanorama1.Text = "radPanorama1";
             this.radPanorama1.ThemeName = "ControlDefault";
@@ -324,6 +324,13 @@
             this.waitCancelButton.TabIndex = 2;
             this.waitCancelButton.Text = "Cancel";
             this.waitCancelButton.Click += new System.EventHandler(this.waitCancelButton_Click);
+            // 
+            // progressLabel
+            // 
+            this.progressLabel.Location = new System.Drawing.Point(0, 0);
+            this.progressLabel.Name = "progressLabel";
+            this.progressLabel.Size = new System.Drawing.Size(2, 2);
+            this.progressLabel.TabIndex = 0;
             // 
             // StartForm
             // 

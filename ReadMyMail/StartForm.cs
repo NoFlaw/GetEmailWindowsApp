@@ -48,7 +48,6 @@ namespace ReadMyMail
         public ICollection<MailMessage> InboxMessages; 
         public CredentialsForm CredentialsForm = new CredentialsForm();
         public InboxPreviewForm InboxPreviewForm = new InboxPreviewForm();
-        //public IEnumerable<MailMessage> MailMessages;
 
         public int HighestPercentageReached = 0;
         public string Password = null;
