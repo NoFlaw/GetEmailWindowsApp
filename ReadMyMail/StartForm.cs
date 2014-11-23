@@ -40,7 +40,7 @@ using Telerik.WinControls.UI;
 
 namespace ReadMyMail
 {
-    public partial class StartForm : Telerik.WinControls.UI.RadForm
+    public partial class StartForm : RadForm
     {
         #region Public Variables
        
@@ -49,7 +49,8 @@ namespace ReadMyMail
         public CredentialsForm CredentialsForm = new CredentialsForm();
         public InboxPreviewForm InboxPreviewForm = new InboxPreviewForm();
         //public IEnumerable<MailMessage> MailMessages;
-        
+
+        public int HighestPercentageReached = 0;
         public string Password = null;
         public const int SslPort = 993;
         public string EmailAddress = null;
@@ -86,6 +87,7 @@ namespace ReadMyMail
         {
             progressBar.Visible = false;
             waitCancelButton.Visible = false;
+            progressLabel.Visible = false;
         }
 
         #endregion
@@ -93,18 +95,19 @@ namespace ReadMyMail
         #region BackgroundWorker Events
         protected void MyBackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         protected void MyBackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             var worker = sender as BackgroundWorker;
-            e.Result = BindInboxPreviewForm(worker, e);
+            
+            e.Result = BindInboxPreviewForm(worker, e);            
         }
 
         protected void MyBackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //LOADING HAS STOPPED...
+           //LOADING HAS STOPPED...
             End = DateTime.Now;
             TimeSpan = End - Begin;
 
@@ -164,7 +167,7 @@ namespace ReadMyMail
             progressBar.Text = "Loading... Please Wait";
 
             progressBar.StartWaiting();
-
+            progressLabel.Visible = true;
             progressBar.Visible = true;
             progressBar.ShowText = true;
 
@@ -174,6 +177,7 @@ namespace ReadMyMail
 
         private void ProgressBarStop()
         {
+            //progressBar.Hide();
             progressBar.StopWaiting();
             progressBar.ResetWaiting();
             progressBar.Text = string.Empty;
@@ -304,6 +308,15 @@ namespace ReadMyMail
                     signatureLinkLabel.Font = new Font(signatureLinkLabel.Font, FontStyle.Bold);
                     break;
             }
+        }
+
+        private void waitCancelButton_Click(object sender, EventArgs e)
+        {
+            // Cancel the asynchronous operation. 
+            MyBackgroundWorker.CancelAsync();
+
+            // Disable the Cancel button.
+            waitCancelButton.Enabled = false;
         }
     }
 }
